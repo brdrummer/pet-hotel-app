@@ -1,0 +1,25 @@
+{
+  "name": "pet-hotel-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "pg": "^7.4.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brdrummer/pet-hotel-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brdrummer/pet-hotel-app/issues"
+  },
+  "homepage": "https://github.com/brdrummer/pet-hotel-app#readme"
+}
