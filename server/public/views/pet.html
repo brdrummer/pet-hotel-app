@@ -1,0 +1,21 @@
+<table>
+    <thead>
+      <th>Owner</th>
+      <th>Pet</th>
+      <th>Breed</th>
+      <th>Color</th>
+      <th>Checked In</th>
+      <th>Actions</th>
+    </thead>
+    <tbody>
+      <tr ng-repeat="thing in vm.petsArray">
+        <td>{{thing.owner}}</td>
+        <td>{{thing.pet}}</td>
+        <td>{{thing.breed}}</td>
+        <td>{{thing.color}}</td>
+        <td>{{thing.checked_in}}</td>
+        <td><button ng-click="vm.addPet()">Submit</button></td>
+        <td><button class="btn btn-secondary" ng-click="vm.deletePet(thing)">Delete</button><button class="btn btn-secondary" ng-click="vm.changePet(thing)">Check In</button></td>
+      </tr>
+    </tbody>
+  </table>
