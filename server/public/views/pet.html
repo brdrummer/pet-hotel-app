@@ -1,21 +1,36 @@
+<h1>Pets</h1>
+<form class="center">
+
+  <input ng-model="vm.pets.pet" type="text" placeholder="Pet">
+  <input ng-model="vm.pets.breed" type="text" placeholder="Breed">
+  <input ng-model="vm.pets.color" type="text" placeholder="Color">
+  <button ng-click="vm.addPets()">Submit</button>
+
+
+</form>
+
+
+
+
+
 <table>
-    <thead>
-      <th>Owner</th>
-      <th>Pet</th>
-      <th>Breed</th>
-      <th>Color</th>
-      <th>Checked In</th>
-      <th>Actions</th>
-    </thead>
-    <tbody>
-      <tr ng-repeat="thing in vm.petsArray">
-        <td>{{thing.owner}}</td>
-        <td>{{thing.pet}}</td>
-        <td>{{thing.breed}}</td>
-        <td>{{thing.color}}</td>
-        <td>{{thing.checked_in}}</td>
-        <td><button ng-click="vm.addPet()">Submit</button></td>
-        <td><button class="btn btn-secondary" ng-click="vm.deletePet(thing)">Delete</button><button class="btn btn-secondary" ng-click="vm.changePet(thing)">Check In</button></td>
-      </tr>
-    </tbody>
-  </table>
+  <thead>
+    <th>Owner</th>
+    <th>Pet</th>
+    <th>Breed</th>
+    <th>Color</th>
+    <th>Checked In</th>
+    <th>Actions</th>
+  </thead>
+  <tbody>
+    <tr ng-repeat="thing in vm.petsArray">
+      <td>{{thing.name}}</td>
+      <td>{{thing.pet}}</td>
+      <td>{{thing.breed}}</td>
+      <td>{{thing.color}}</td>
+      <td>{{thing.checked_in}}</td>
+      <td><button class="btn btn-secondary" ng-click="vm.deletePets(thing)">Delete</button><button class="btn btn-secondary"
+          ng-click="vm.changePets(thing)">Check In</button></td>
+    </tr>
+  </tbody>
+</table>

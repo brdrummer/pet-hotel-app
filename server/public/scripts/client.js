@@ -15,24 +15,66 @@ petHotelApp.config(['$routeProvider', function ($routeProvider) {
 // PETS CONTROLLER
 petHotelApp.controller('PetsController', ['$http', function ($http) {
     let vm = this;
-    vm.petsArray=[];
+    vm.petsArray = [];
     vm.pets = {};
     vm.getPets = function () {
-
         $http({
             method: 'GET',
             url: '/pets',
-     }).then(function (response) {
-            console.log(response);
+        }).then(function (response) {
             vm.petsArray = response.data;
+            console.log(vm.petsArray);
+            
         }).catch((error) => {
             console.log('error ON client side', error);
-           
-        });
-    } 
 
+        });
+    }
+
+    vm.addPets = function () {
+        $http({
+            method: 'POST',
+            url: '/pets',
+            data: vm.pets
+        }).then(function () {
+            vm.pets.pet = '';
+            vm.pets.breed = '';
+            vm.pets.color = '';
+            vm.getPets();
+        }).catch((error) => {
+            console.log('error ON client side', error);
+        });
+    }
+    vm.getPets();
+
+    vm.deletePets = function (thing) {
+        $http({
+            method: 'DELETE',
+            url: '/pets',
+            params: { id: thing.id }
+        }).then(function () {
+
+            vm.getPets();
+        }).catch((error) => {
+            console.log('error ON client side', error);
+        });
+    }
+    vm.getPets();
+
+    vm.changePets = function (petToUpdate) {
+
+        $http({
+            method: 'PUT',
+            url: '/pets',
+            params: petToUpdate
+        }).then(function () {
+            vm.getPets();
+            console.log('a pet has been updated!');
+        })
+    }
 
 }])
+
 // OWNERS CONTROLLER
 petHotelApp.controller('OwnersController', ['$http', function ($http) {
     let vm = this;
@@ -44,12 +86,12 @@ petHotelApp.controller('OwnersController', ['$http', function ($http) {
         $http({
             method: 'GET',
             url: '/owners',
-     }).then(function (response) {
+        }).then(function (response) {
             console.log(response);
             vm.ownersArray = response.data;
         }).catch((error) => {
             console.log('error ON client side', error);
-           
+
         });
     }
 

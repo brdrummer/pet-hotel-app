@@ -84,3 +84,11 @@ body {
     background-color: #E6E6E5;
     color: #2F2F2F;
   }
+
+  .center {
+    text-align: center;
+  }
+  
+  .align-input {
+    margin-left: 115px;
+  }

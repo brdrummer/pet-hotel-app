@@ -25,7 +25,6 @@ router.get('/', (req, res) => {
 router.delete('/', (req, res) => {
     pool.query(`DELETE FROM "owners" WHERE "id" = $1;`,
         [req.query.id])
-
         .then(() => {
             res.sendStatus(201);
         }).catch((error) => {
@@ -45,6 +44,8 @@ router.post('/', (req, res) => {
             res.sendStatus(500);
         });
 }); //End POST 
+
+
 
 
 module.exports = router;
