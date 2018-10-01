@@ -15,6 +15,16 @@ router.get('/', (req, res) => {
             res.sendStatus(500);
         });
 });
+router.get('/', (req, res) => {
+pool.query(`SELECT "name" FROM "owners"`)
+        .then((results) => {
+            console.log(results.rows);
+            res.send(results.rows);
+        }).catch((error) => {
+            console.log('error with SQL select for owners', error);
+            res.sendStatus(500);
+        });
+});
 
 
 

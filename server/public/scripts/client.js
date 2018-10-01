@@ -17,6 +17,7 @@ petHotelApp.controller('PetsController', ['$http', function ($http) {
     let vm = this;
     vm.petsArray = [];
     vm.pets = {};
+    vm.namesList=[];
     vm.getPets = function () {
         $http({
             method: 'GET',
@@ -24,6 +25,22 @@ petHotelApp.controller('PetsController', ['$http', function ($http) {
         }).then(function (response) {
             vm.petsArray = response.data;
             console.log(vm.petsArray);
+            
+        }).catch((error) => {
+            console.log('error ON client side', error);
+
+        });
+    }
+
+    
+    vm.getOwners = function () {
+
+        $http({
+            method: 'GET',
+            url: '/owners',
+        }).then(function (response) {
+            vm.namesList=response.data
+            console.log(vm.namesList);
             
         }).catch((error) => {
             console.log('error ON client side', error);
@@ -41,11 +58,13 @@ petHotelApp.controller('PetsController', ['$http', function ($http) {
             vm.pets.breed = '';
             vm.pets.color = '';
             vm.getPets();
+            vm.getOwners();
         }).catch((error) => {
             console.log('error ON client side', error);
         });
     }
     vm.getPets();
+    vm.getOwners();
 
     vm.deletePets = function (thing) {
         $http({
@@ -55,11 +74,13 @@ petHotelApp.controller('PetsController', ['$http', function ($http) {
         }).then(function () {
 
             vm.getPets();
+            vm.getOwners();
         }).catch((error) => {
             console.log('error ON client side', error);
         });
     }
     vm.getPets();
+    vm.getOwners();
 
     vm.changePets = function (petToUpdate) {
 
@@ -69,6 +90,7 @@ petHotelApp.controller('PetsController', ['$http', function ($http) {
             params: petToUpdate
         }).then(function () {
             vm.getPets();
+            vm.getOwners();
             console.log('a pet has been updated!');
         })
     }
